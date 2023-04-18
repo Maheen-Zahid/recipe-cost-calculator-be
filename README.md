@@ -22,6 +22,17 @@ The following dependencies are required to run Sous Recipe Costing Calculator:
 * Rails 7.0.4
 * PostgreSQL 14.4
 
+## PROJECT SETUP
+### Clone project
+Use git to clone the project to your local machine
+```
+git clone https://github.com/ZamanWork/recipe-cost-calculator-backend.git
+```
+Move to the cloned repository
+```
+cd recipe-cost-calculator-backend
+```
+
 ## Installation Guide
 >#### Install [RVM](https://rvm.io/rvm/install)
 Install the right ruby version (currently 3.1.2):
@@ -52,6 +63,16 @@ bundle install or bundle
 rails db:create
 rails db:migrate
 rails db:seed
+```
+## Test Cases:
+1. Prepare Test Database:
+```sh
+rake db:test:prepare
+RAILS_ENV=test rake db:seed
+```
+2. Run Test cases
+```
+rspec
 ```
 
 ## Linting

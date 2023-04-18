@@ -6,8 +6,8 @@ module Api
       before_action :set_recipe, only: %i[show]
 
       def create
-        @recipe, isSaved = RecipeService.new(permitted_params).call
-        if isSaved
+        @recipe, is_saved = RecipeService.new(permitted_params).call
+        if is_saved
           render json: Api::V1::RecipeSerializer.new(@recipe).serialized_json, status: :created
         else
           render json: { detail: @recipe.errors.full_messages }, status: :unprocessable_entity

@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - db/seeds.rb
+    - vendor/**/*
+    - config/**/*
+    - bin/**/*
+
+  NewCops: enable
+Metrics/AbcSize:
+  Max: 50
+Metrics/CyclomaticComplexity:
+  Max: 10
+Metrics/PerceivedComplexity:
+  Max: 10
+Style/Documentation:
+  Exclude:
+    - 'app/**/*.rb'
+ClassLength:
+  Max: 700
+Metrics/MethodLength:
+  Max: 30
+Metrics/LineLength:
+  Max: 140

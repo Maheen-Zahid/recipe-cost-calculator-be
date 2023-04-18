@@ -11,10 +11,12 @@ development:
 
 test:
   <<: *default
-  database: sous_backend_test
+  database: <%= ENV['PG_DB_NAME'] %>
 
 production:
   <<: *default
-  database: sous_backend_production
-  username: sous_backend
-  password: <%= ENV["SOUS_BACKEND_DATABASE_PASSWORD"] %>
+  database: <%= ENV['PG_DB_NAME'] %>
+  username: <%= ENV['PG_DB_USERNAME'] %>
+  password: <%= ENV['PG_DB_PASSWORD'] %>
+  host:     <%= ENV['PG_DB_HOST'] %>
+  port:     <%= ENV['PG_DB_PORT'] %>

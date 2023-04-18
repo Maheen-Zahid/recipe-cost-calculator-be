@@ -8,7 +8,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv::Railtie.load if %w[development test].include? ENV['RAILS_ENV']
+
 module SousBackend
+  # Seeds is a class responsible for creating seed data for the application.
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
