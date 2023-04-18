@@ -3,7 +3,7 @@
 module Api
   module V1
     class RecipesController < ApplicationController
-      before_action :set_recipe, only: %i[show]
+      before_action :set_recipe, only: %i[last_recipe]
 
       def create
         @recipe, is_saved = RecipeService.new(permitted_params).call
@@ -14,14 +14,18 @@ module Api
         end
       end
 
-      def show
-        render json: Api::V1::RecipeSerializer.new(@recipe).serialized_json, status: :ok
+      def last_recipe
+        if @recipe
+          render json: Api::V1::RecipeSerializer.new(@recipe).serialized_json, status: :ok
+        else
+          render json: { detail: 'No recipe found' }, status: :not_found
+        end
       end
 
       private
 
       def set_recipe
-        @recipe = Recipe.find params[:id]
+        @recipe = Recipe.last
       end
 
       def permitted_params
